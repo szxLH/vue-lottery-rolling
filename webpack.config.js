@@ -1,8 +1,11 @@
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+
+var entry = process.env.NODE_ENV === 'development' ? './src/app.js' : './src/main.js'
 
 module.exports = {
-  entry: './src/main.js',
+  entry: entry,
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -86,6 +89,20 @@ module.exports = {
   },
   devtool: '#eval-source-map'
 }
+
+if (process.env.NODE_ENV === 'development') {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new HtmlWebpackPlugin({
+      title: 'draw rolling',
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      chunksSortMode: 'dependency'
+    })
+  ])
+  
+}
+
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
