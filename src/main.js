@@ -1,2 +1,2 @@
-import VueLottery from './lottery'
-export default VueLottery;
+import Home from './lottery'
+export default Home;

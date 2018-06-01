@@ -25,7 +25,6 @@
 export default {
     data() {
         return {
-            repeat: 3, // 重复次数，需设置大于等于2的值
             offset: [],
             transition: false,
             lock: false,
@@ -46,7 +45,12 @@ export default {
         },
         asyncGetDrawResult: {
             type: Function
+        },
+        repeat: {
+            type: Number,
+            default: 3
         }
+        
     },
     mounted() {
         this.initPosition();
@@ -144,22 +148,6 @@ export default {
                     that.lock = false;
                 })
         }
-        // handleDraw() {
-        //     let ends = [1, 2, 0];
-        //     let that = this;
-        //     let data = Object.assign([], that.offset);
-        //     if (this.disable) return;
-        //     this.lock = true;
-        //     this.preResult = ends; // 存储本次抽奖结果，用于下次抽奖初始化
-        //     data.map((item, index) => {
-        //         setTimeout(() => {
-        //             that.transition = true;
-        //             let data = Object.assign([], that.offset);
-        //             data[index] = (that.repeat - 1) * that.round_length + ends[index];
-        //             that.offset = data;
-        //         }, index * 500);
-        //     })
-        // }
     }
 }
 </script>

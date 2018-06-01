@@ -9,7 +9,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'build.js',
+    library: 'VueLotteryRolling',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
